@@ -1,0 +1,110 @@
+﻿
+@using SachOnline.Models
+@using PagedList.Mvc;
+@model PagedList.PagedList<SachOnline.Models.DONDATHANG>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<style type="text/css">
+    img {
+        width: 250px;
+        margin-bottom: 20px;
+    }
+
+    .abc p {
+        padding-top: 20px;
+    }
+</style>
+
+<h2 style="text-align:center; padding: 20px 0px;">DANH SÁCH ĐƠN ĐẶT HÀNG</h2>
+
+<table class="table">
+    <tr>
+        <th style="text-align: center;">
+            <label class="control-label" style="width:30px;">Mã ĐH</label>
+        </th>
+        <th style="text-align: center;">
+            <label class="control-label" style="width:30px;">Mã Xe</label>
+        </th>
+        <th style="text-align: center;">
+            <label class="control-label" style="width:30px;">Mã KH</label>
+        </th>
+        <th style="text-align: center;">
+            <label class="control-label" style="width:80px;">Tên KH </label>
+        </th>
+        <th style="text-align: center;">
+            <label class="control-label" style="width:110px;">SĐT</label>
+        </th>
+        <th style="text-align: center;">
+            <label class="control-label" style="width:110px;">Địa chỉ</label>
+        </th>
+        <th style="text-align: center;">
+            <label class="control-label" style="width:100px;">Ngày đặt</label>
+        </th>
+        <th style="text-align: center;">
+            <label class="control-label" style="width:100px;">Ngày giao</label>
+        </th>
+        <th style="text-align: center;">
+            <label class="control-label" style="width:50px;">Đã thanh toán</label>
+        </th>
+        <th style="text-align: center;">
+            <label class="control-label" style="width:100px;">Tình trạng giao hàng</label>
+        </th>
+        <th style="width: 200px;"></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td style="text-align: center;">
+                @Html.DisplayFor(modelItem => item.DonDatHangID)
+            </td>
+            <td style="text-align: center;">
+                @Html.DisplayFor(modelItem => item.SachID)
+            </td>
+            <td style="text-align: center;">
+                @Html.DisplayFor(modelItem => item.KhachHangID)
+            </td>
+            <td style="text-align: center;">
+                @Html.DisplayFor(modelItem => item.KHACHHANG.TenKhachHang)
+            </td>
+            <td style="text-align: center;">
+                @Html.DisplayFor(modelItem => item.KHACHHANG.SoDienThoai)
+            </td>
+            <td style="text-align: center;">
+                @Html.DisplayFor(modelItem => item.KHACHHANG.DiaChi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NgayDat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NgayGiao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DaThanhToan)
+            </td>
+            <td style="text-align: center;">
+                @Html.DisplayFor(modelItem => item.TinhTrangGiaoHang)
+            </td>
+
+            <td>
+
+                <a href="@Url.Action("Edit", new { id = item.DonDatHangID })" class="btn btn-warning" role="button">Sửa</a>
+
+                <a href="@Url.Action("Details", new { id = item.DonDatHangID })" class="btn btn-primary" role="button">Chi tiết</a>
+
+                <a href="@Url.Action("Delete", new { id = item.DonDatHangID })" class="btn btn-danger" role="button">Xóa</a>
+
+            </td>
+        </tr>
+    }
+
+</table>
+@*Tạo liên kết phần trang*@
+Trang @(Model.PageCount < Model.PageNumber ? 0 :
+Model.PageNumber)/@Model.PageCount
+<div class="MenuTrang">
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))
+</div>

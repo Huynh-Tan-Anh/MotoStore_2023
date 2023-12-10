@@ -1,0 +1,77 @@
+﻿@model SachOnline.Models.DONDATHANG
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>CHỈNH SỬA ĐƠN HÀNG</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <hr />
+    <div class="form-group">
+        <label class="control-label col-md-2">Mã đơn hàng:</label>
+        <div class="col-md-10">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.DonDatHangID)
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-2">Mã Xe:</label>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.DaThanhToan, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.DaThanhToan, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-2">Mã Khách hàng:</label>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.KhachHangID, new { htmlAttribute = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.KhachHangID, "", new {@class = "text-danger"})
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-2">Tình trạng thanh toán:</label>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.DaThanhToan, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.DaThanhToan, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2">Tình trạng giao hàng:</label>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.TinhTrangGiaoHang, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.TinhTrangGiaoHang, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2">Ngày đặt hàng:</label>
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.NgayDat, "{0:dd/MM/yyyy}", new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.NgayDat, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-2">Ngày giao hàng:</label>
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.NgayGiao, "{0:dd/MM/yyyy}", new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.NgayGiao, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Lưu" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+ }
+ <div>
+  @Html.ActionLink("Trở về trang Quản lý đơn hàng", "Index")
+ </div>

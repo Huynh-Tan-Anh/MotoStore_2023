@@ -1,0 +1,80 @@
+﻿@model SachOnline.Models.DONDATHANG
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>XÓA ĐƠN HÀNG</h2>
+
+<h3>Bạn chắc chắn muốn xóa đơn hàng này?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+           Mã khách hàng: 
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KhachHangID)
+        </dd>
+
+        <dt>
+            Ngày đặt:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgayDat)
+        </dd>
+
+        <dt>
+            Tổng tiền: 
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TongTien)
+        </dd>
+
+        <dt>
+            Ngày giao: 
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgayGiao)
+        </dd>
+
+        <dt>
+            Tình trạng giao hàng: 
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TinhTrangGiaoHang)
+        </dd>
+
+        <dt>
+            Đã thanh toán: 
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DaThanhToan)
+        </dd>
+
+        <dt>
+            Mã sách: 
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SachID)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xóa" class="btn btn-default" /> |
+            @Html.ActionLink("Trở về trang Quản lý đơn hàng", "Index")
+        </div>
+    }
+</div>

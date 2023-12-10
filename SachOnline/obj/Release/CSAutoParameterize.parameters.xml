@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="SachOnlineConnectionString8-Web.config Connection String" description="SachOnlineConnectionString8 Connection String used in web.config by the application to access the database." defaultValue="Data Source=SQL5097.site4now.net;Initial Catalog=db_aa2635_huynhtananh001;User ID=db_aa2635_huynhtananh001_admin;Password=huynhtananh-01" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\tanan\\Downloads\\SachOnline\\SachOnline\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='SachOnlineConnectionString8']/@connectionString" />
+  </parameter>
+</parameters>

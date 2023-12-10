@@ -1,0 +1,85 @@
+﻿@model SachOnline.Models.DONDATHANG
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<style type="text/css">
+    img {
+        width: 250px;
+        margin-bottom: 20px;
+    }
+
+    .abc p {
+        padding-top: 20px;
+    }
+</style>
+
+<h2>CHI TIẾT ĐƠN HÀNG</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+           Mã đơn hàng:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DonDatHangID)
+        </dd>
+
+        <dt>
+            Ngày đặt:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgayDat)
+        </dd>
+
+        <dt>
+            Tổng tiền:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TongTien)
+        </dd>
+
+        <dt>
+            Ngày giao:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgayGiao)
+        </dd>
+
+        <dt>
+            Tình trạng giao hàng:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TinhTrangGiaoHang)
+        </dd>
+
+        <dt>
+            Đã thanh toán:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DaThanhToan)
+        </dd>
+
+        <dt>
+            Mã sách:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SachID)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Sửa", "Edit", new { id = Model.DonDatHangID }) |
+    @Html.ActionLink("Trở về trang Quản lý đơn hàng", "Index")
+</p>

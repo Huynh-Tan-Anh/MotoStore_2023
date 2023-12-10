@@ -1,0 +1,53 @@
+﻿﻿@model SachOnline.Models.SACH
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<style type="text/css">
+    img {
+        width: 250px;
+        margin-bottom: 20px;
+    }
+</style>
+
+<div class="book-detail">
+    <h2 style="text-align:center;">THÔNG TIN CHI TIẾT </h2>
+    <hr />
+    <div class="col-md-1"></div>
+    <div class="col-md-3">
+        <p>
+            <img src="~/Images/@Model.anhSP" alt="@Model.TenSach">
+        </p>
+    </div>
+    <div class="col-md-7">
+        <h3 style="text-transform:uppercase; text-align:center; padding-bottom:20px; font-weight: 700; color: red;">
+            @Html.DisplayFor(model => model.TenSach)
+        </h3>
+        <p>
+            @Html.Raw(@Model.Mota.ToString().Replace("\n", "<p>&nbsp&nbsp&nbsp&nbsp&nbsp"))
+        </p>
+    </div>
+    <div class="col-md-12">
+        <p>
+            <b>Ngày cập nhật:</b> @Html.FormatValue(@Model.NgayCapNhat, "{0:dd/MM/yyyy}")
+        </p>
+        <p>
+            <b>Số lượng bán:</b> @Html.DisplayFor(model => model.SoLuong)
+        </p>
+        <p>
+            <b>Giá bán:</b> @Html.FormatValue(@Model.GiaBan, "{0:#,##0}") VNĐ
+        </p>
+        <p>
+            <b>Chủ đề:</b> @Html.DisplayFor(model => model.CHUDE.TenChuDe)
+        </p>
+        <p>
+            <b>Nhà xuất bản:</b> @Html.DisplayFor(model => model.NHAXUATBAN.TenNhaXuatBan)
+        </p>
+        <div class="actions">
+            @Html.ActionLink("Sửa", "Edit", new { id = Model.SachID }) |
+            @Html.ActionLink("VỀ TRANG QUẢN LÝ XE", "Index")
+        </div>
+    </div>
+</div>

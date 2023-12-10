@@ -1,0 +1,69 @@
+﻿﻿@model SachOnline.Models.KHACHHANG
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>XÓA KHÁCH HÀNG</h2>
+
+<h3 style="color:red;">Bạn có chắc chắn muốn xóa khách hàng này?</h3>
+<h4 style="color:red;">@Html.Raw(ViewBag.ThongBao)</h4>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Họ tên:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TenKhachHang)
+        </dd>
+
+        <dt>
+            Tài khoản:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenDN)
+        </dd>
+
+        <dt>
+            Email:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            Địa chỉ:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DiaChi)
+        </dd>
+
+        <dt>
+            Số điện thoại:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoDienThoai)
+        </dd>
+
+        <dt>
+            Ngày sinh:
+        </dt>
+
+        
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-actions no-color">
+            <input type="submit" value="XÓA" class="btn btn-default" /> |
+            @Html.ActionLink("VỀ TRANG QUẢN LÝ SÁCH", "Index")
+        </div>
+    }
+</div>

@@ -1,0 +1,57 @@
+﻿﻿@model SachOnline.Models.SACH
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<style type="text/css">
+    img {
+        width: 200px;
+        margin-bottom: 20px;
+    }
+
+    h3, h4 {
+        color: red;
+        font-weight: bold;
+    }
+</style>
+
+<h2>XÁC NHẬN THÔNG TIN CẦN XÓA</h2>
+
+<h3>Bạn quyết định xóa thông tin loại xe này?</h3>
+<h4 style="color:red;">@Html.Raw(ViewBag.ThongBao)</h4>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>Tên loại xe:</dt>
+        <dd style="text-transform:uppercase; font-size: 18px; font-weight: 700; color: red;">
+            @Html.DisplayFor(model => model.TenSach)
+        </dd>
+        <dt> Mô tả: </dt>
+        <dd>
+            @Html.Raw(@Model.Mota.ToString().Replace("\n",
+       "</p><p>&nbsp&nbsp&nbsp&nbsp&nbsp"))
+        </dd>
+        <dt> Ảnh: </dt>
+        <dd> <img src="~/Images/@Model.anhSP" alt=" @Model.TenSach"> </dd>
+        <dt> Ngày cập nhật:</dt>
+        <dd> @Html.FormatValue(@Model.NgayCapNhat, "{0:dd/MM/yyyy}") </dd>
+        <dt> Số lượng bán: </dt>
+        <dd> @Html.DisplayFor(model => model.SoLuong)</dd>
+        <dt>Giá bán: </dt>
+        <dd> @Html.FormatValue(@Model.GiaBan, "{0:#,##0}") VNĐ</dd>
+        <dt>Hãng sản xuất:</dt>
+        <dd>@Html.DisplayFor(model => model.CHUDE.TenChuDe)</dd>
+        <dt>Xuất xứ:</dt>
+        <dd>@Html.DisplayFor(model => model.NHAXUATBAN.TenNhaXuatBan)</dd>
+    </dl>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-actions no-color">
+            <input type="submit" value="XÓA" class="btn btn-default" /> |
+            @Html.ActionLink("VỀ TRANG QUẢN LÝ XE", "Index")
+        </div>
+    }
+</div>

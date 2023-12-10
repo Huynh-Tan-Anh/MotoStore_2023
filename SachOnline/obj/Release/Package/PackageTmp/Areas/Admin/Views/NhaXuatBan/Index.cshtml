@@ -1,0 +1,51 @@
+﻿﻿@using SachOnline.Models
+@using PagedList.Mvc;
+@model PagedList.PagedList<SachOnline.Models.NHAXUATBAN>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+<h2 style="text-align:center;">QUẢN LÝ NHÀ XUẤT BẢN</h2>
+<p>
+    @Html.ActionLink("Thêm mới", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th style="text-align:center; width: 400px;">
+            Tên nhà xuất bản
+        </th>
+        <th style="text-align:center;width:200px">
+            Địa chỉ
+        </th>
+        <th style="text-align:center;width:200px">
+            Số điện thoại
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td style="padding-left: 30px;">
+                @Html.DisplayFor(modelItem => item.TenNhaXuatBan)
+            </td>
+            <td style="text-align:center;">
+                @Html.DisplayFor(modelItem => item.DiaChi)
+            </td>       
+            
+            <td style="padding-left: 90px">
+                <a href="@Url.Action("Edit", new { id = item.NhaXuatBanID })" class="btn btn-warning" role="button">Sửa</a>
+                <a href="@Url.Action("Details", new { id = item.NhaXuatBanID })" class="btn btn-primary" role="button">Chi tiết</a>
+                <a href="@Url.Action("Delete", new { id = item.NhaXuatBanID })" class="btn btn-danger" role="button">Xóa</a>
+            </td>
+        </tr>
+    }
+</table>
+@*Tạo liên kết phần trang*@
+Trang @(Model.PageCount < Model.PageNumber ? 0 :
+Model.PageNumber)/@Model.PageCount
+<div class="MenuTrang">
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))
+</div>
